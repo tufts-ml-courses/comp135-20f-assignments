@@ -7,6 +7,6 @@ Instructor: Mike Hughes <www.michaelchughes.com>
 
 # Contents
 
-* HW0 : Basic Python Skills
+* HW0 : Numerical Programming Fundamentals
 
 * HW1 : Regression
