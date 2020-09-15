@@ -6,6 +6,11 @@ Instructor: Mike Hughes <www.michaelchughes.com>
 
 Jump to: [Labs](#labs) - [Homeworks](#homeworks)
 
+# Quick Start for Jupyter
+
+For a few easy steps to launch a live interactive Jupyter notebook session in your browser, see
+https://www.cs.tufts.edu/comp/135/2020f/resources.html#python-and-jupyter-quick-start
+
 # Labs
 
 * day01 - Intro To Numerical Python
