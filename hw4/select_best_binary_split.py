@@ -7,8 +7,12 @@ def select_best_binary_split(x_NF, y_N, MIN_SAMPLES_LEAF=1):
 
     Args
     ----
-    x_NF
-    y_N
+    x_NF : 2D array, shape (N,F) = (n_examples, n_features)
+        Training data features at current node we wish to find a split for.
+    y_N : 1D array, shape (N,) = (n_examples,)
+        Training labels at current node.
+    min_samples_leaf : int
+        Minimum number of samples allowed at any leaf.
 
     Returns
     -------
@@ -18,7 +22,14 @@ def select_best_binary_split(x_NF, y_N, MIN_SAMPLES_LEAF=1):
     thresh_val : float or None
         Value of x[feat_id] at which we threshold.
         If None, a binary split that improves the cost is not possible.
-
+    x_LF : 2D array, shape (L, F)
+        Training data features assigned to left child using best split.
+    y_L : 1D array, shape (L,)
+        Training labels assigned to left child using best split.
+    x_RF : 2D array, shape (R, F)
+        Training data features assigned to right child using best split.
+    y_R : 1D array, shape (R,)
+        Training labels assigned to right child using best split.
 
     Examples
     --------
@@ -27,7 +38,7 @@ def select_best_binary_split(x_NF, y_N, MIN_SAMPLES_LEAF=1):
     >>> F = 1
     >>> x_NF = np.asarray([0.0, 1.0, 2.0, 3.0, 4.0, 5.0]).reshape((6, 1))
     >>> y_N  = np.asarray([0.0, 0.0, 0.0, 1.0, 1.0, 1.0])
-    >>> feat_id, thresh_val, _, _, _, _ =select_best_binary_split(x_NF, y_N)
+    >>> feat_id, thresh_val, _, _, _, _ = select_best_binary_split(x_NF, y_N)
     >>> feat_id
     0
     >>> thresh_val
@@ -37,7 +48,7 @@ def select_best_binary_split(x_NF, y_N, MIN_SAMPLES_LEAF=1):
     # Should give same results as 1a
     >>> x_NF = np.asarray([2.0, 1.0, 0.0, 3.0, 5.0, 4.0]).reshape((6, 1))
     >>> y_N  = np.asarray([0.0, 0.0, 0.0, 1.0, 1.0, 1.0])
-    >>> feat_id, thresh_val, _, _, _, _ =select_best_binary_split(x_NF, y_N)
+    >>> feat_id, thresh_val, _, _, _, _ = select_best_binary_split(x_NF, y_N)
     >>> feat_id
     0
     >>> thresh_val
@@ -53,7 +64,7 @@ def select_best_binary_split(x_NF, y_N, MIN_SAMPLES_LEAF=1):
     >>> x_N1 = np.asarray([0.0, 1.0, 2.0, 3.0, 4.0, 5.0]).reshape((6,1))
     >>> x_NF = np.hstack([prng.randn(N, F//2), x_N1, np.zeros((N, F//2))])
     >>> y_N  = np.asarray([0.0, 0.0, 0.0, 1.0, 1.0, 1.0])
-    >>> feat_id, thresh_val, _, _, _, _ =select_best_binary_split(x_NF, y_N)
+    >>> feat_id, thresh_val, _, _, _, _ = select_best_binary_split(x_NF, y_N)
     >>> feat_id
     6
     >>> thresh_val
@@ -64,7 +75,7 @@ def select_best_binary_split(x_NF, y_N, MIN_SAMPLES_LEAF=1):
     >>> F = 1
     >>> x_NF = np.asarray([3.0, 3.0, 3.0, 3.0, 3.0]).reshape((5,1))
     >>> y_N  = np.asarray([0.0, 0.0, 0.0, 1.0, 1.0])
-    >>> feat_id, thresh_val, _, _, _, _ =select_best_binary_split(x_NF, y_N)
+    >>> feat_id, thresh_val, _, _, _, _ = select_best_binary_split(x_NF, y_N)
     >>> feat_id is None
     True
 
@@ -74,7 +85,7 @@ def select_best_binary_split(x_NF, y_N, MIN_SAMPLES_LEAF=1):
     >>> prng = np.random.RandomState(0)
     >>> x_NF = prng.rand(N, F)
     >>> y_N  = 1.2345 * np.ones(N)
-    >>> feat_id, thresh_val, _, _, _, _ =select_best_binary_split(x_NF, y_N)
+    >>> feat_id, thresh_val, _, _, _, _ = select_best_binary_split(x_NF, y_N)
     >>> feat_id is None
     True
     '''
