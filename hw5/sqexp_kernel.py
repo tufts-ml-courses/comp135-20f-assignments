@@ -21,15 +21,17 @@ array([[0.368]])
 
 # Example 2: Kernel evaluations with F=2 features and several examples at once
 >>> x_train_32 = np.asarray([[0.0, 0.0], [1.0, 1.0], [2.0, 2.0]])
->>> calc_sqexp_kernel(x_train_32, x_train_32)
-array([[1.   , 0.368, 0.018],
-       [0.368, 1.   , 0.368],
-       [0.018, 0.368, 1.   ]])
+>>> k_33 = calc_sqexp_kernel(x_train_32, x_train_32)
+>>> k_33
+array([[1.   , 0.135, 0.   ],
+       [0.135, 1.   , 0.135],
+       [0.   , 0.135, 1.   ]])
 
->>> x_test_22 = np.asarray([[-1.0, -2.0], [2.2, 1.2]])
->>> calc_sqexp_kernel(x_test_22, x_train_32)
-array([[0.018, 0.   , 0.   ],
-       [0.237, 0.961, 0.527]])
+>>> x_test_22 = np.asarray([[-1.0, -2.0], [2.2, 0.8]])
+>>> k_23 = calc_sqexp_kernel(x_test_22, x_train_32)
+>>> k_23
+array([[0.007, 0.   , 0.   ],
+       [0.004, 0.228, 0.228]])
 >>> 
 '''
 
