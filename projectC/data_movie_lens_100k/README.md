@@ -2,7 +2,9 @@
 
 ## movie_info.csv
 
-Contains information about each movie.
+Contains information about each movie (one per row of CSV file).
+
+Column description:
 
 ```
 item_id : int
@@ -20,7 +22,9 @@ orig_item_id : int
 
 ## user_info.csv
 
-Contains information about each user.
+Contains information about each user (one per row of CSV file).
+
+Column description:
 
 ```
 user_id : int
